@@ -81,6 +81,11 @@ ansible-playbook playbooks/install-docker.yaml -v -K
 Using /etc/ansible/ansible.cfg as config file
 BECOME password:
 ```
+```text
+ansible-playbook playbooks/install-docker.yaml -v -K
+Using /etc/ansible/ansible.cfg as config file
+BECOME password:
+```
 ### Validar versiones instaladas
 ```sh
 [root@worker01 ~]# java --version
@@ -121,7 +126,6 @@ Server: Docker Engine - Community
 Red Hat Enterprise Linux release 8.6 (Ootpa)
 [root@worker01 ~]#
 ```
-
 
 By
 -------
