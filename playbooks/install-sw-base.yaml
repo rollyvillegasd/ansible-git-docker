@@ -1,0 +1,9 @@
+---
+- name: Instalar SW Base para Jenkins en Red Hat 8
+  hosts: jenkins_agents
+  become: true
+  
+  roles:
+   - 01-sw_base
+#   - 02-docker
+#    - 03-jenkins_agent

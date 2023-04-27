@@ -1,0 +1,20 @@
+---
+# tasks file for 01-sw_base
+#task para el sw base
+- name: Actualizar paquetes de RedHat
+  yum:
+    name: '*'
+    state: latest
+
+#Instalar JDK11    
+- name: Instalar OpenJDK 11
+  yum:
+    name: java-11-openjdk-11.0.13.0.8-4.el8_5.x86_64
+    state: present
+
+#Instalar Git
+- name: Instalar Git
+  become: true
+  yum:
+    name: git
+    state: present

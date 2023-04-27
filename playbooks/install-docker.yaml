@@ -1,0 +1,9 @@
+---
+- name: Instalar Docker in RHEL8
+  hosts: jenkins_agents
+  become: true
+
+  roles:
+          #   - 01-sw_base
+   - 02-docker
+

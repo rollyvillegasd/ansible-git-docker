@@ -1,0 +1,56 @@
+---
+# tasks file for 02-docker
+- name: Remove the podman
+  ansible.builtin.yum:
+    name: podman
+    state: absent
+
+- name: Upgrade all packages
+  ansible.builtin.yum:
+    name: '*'
+    state: latest
+
+- name: Install yum utils
+  yum:
+    name: yum-utils
+    state: latest
+  register: result
+  retries: 3
+  delay: 10
+  until: result is succeeded
+
+- name: Add Docker repo
+  get_url:
+    url: https://download.docker.com/linux/rhel/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+    #shell: sed -i 's~/rhel/~/centos/~g' /etc/yum.repos.d/docker-ce.repo
+  become: true
+
+- name: enabled repo Docker...
+  become: yes
+  shell: sed -i 's~/rhel/~/centos/~g' /etc/yum.repos.d/docker-ce.repo
+  register: result
+  retries: 3
+  delay: 10
+  until: result is succeeded
+
+- name: Install Docker
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-compose-plugin
+  register: result
+  retries: 3
+  delay: 10
+  until: result is succeeded
+
+- name: Start and enable docker service
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+    daemon_reload: yes
