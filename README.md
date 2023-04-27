@@ -1,9 +1,8 @@
 # Install GIT and Docker with Ansible
 
 ### Ansible
-```
 [Ansible](https://github.com/rollyvillegasd/ansible-ntp) Configuración de ansible
-```
+
 ### Validar versión de Ansible
 ```sh
 subscription-manager repos --enable rhel-7-server-ansible-2.6-rpms
@@ -86,6 +85,12 @@ ansible-playbook playbooks/install-docker.yaml -v -K
 Using /etc/ansible/ansible.cfg as config file
 BECOME password:
 ```
+```text
+PLAY RECAP ***********************************************************************************************************
+worker02.example.com : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+worker01.example.com : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+
 ### Validar versiones instaladas
 ```sh
 [root@worker01 ~]# java --version
