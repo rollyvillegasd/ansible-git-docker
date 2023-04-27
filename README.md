@@ -2,7 +2,7 @@
 
 ### Ansible
 ```
-[Ansible] Ver configuración de ansible
+[Ansible](https://github.com/rollyvillegasd/ansible-ntp) Configuración de ansible
 ```
 ### Validar versión de Ansible
 ```sh
@@ -64,13 +64,23 @@ ansible --version
 ansible-playbook --syntax-check playbooks/install-sw-base.yaml -v -K
 ansible-playbook --syntax-check playbooks/install-docker.yml -v -K
 ```
+```text
+ ansible-playbook --syntax-check playbooks/install-sw-base.yaml -v -K
+Using /etc/ansible/ansible.cfg as config file
 
+playbook: playbooks/install-sw-base.yaml
+
+```
 ### Ejecutar playbook
 ```sh
 ansible-playbook playbooks/install-sw-base.yaml -v -K
 ansible-playbook playbooks/install-docker.yaml -v -K
 ```
-
+```text
+ansible-playbook playbooks/install-docker.yaml -v -K
+Using /etc/ansible/ansible.cfg as config file
+BECOME password:
+```
 ### Validar versiones instaladas
 ```sh
 [root@worker01 ~]# java --version

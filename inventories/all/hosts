@@ -1,0 +1,8 @@
+[jenkins_agents]
+jenkins-worker01.example.com
+jenkins-worker02.example.com
+
+[all:vars]
+ansible_connection=ssh
+ansible_ssh_user=ansible
+ansible_ssh_pass=XXXXX
